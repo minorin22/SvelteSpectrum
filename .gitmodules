@@ -1,0 +1,3 @@
+[submodule "spectrum-css-grid"]
+	path = spectrum-css-grid
+	url = git@github.com:adobe/spectrum-css-grid.git

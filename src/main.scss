@@ -1,0 +1,73 @@
+$lightest-gray-75: #ffffff;
+$lightest-gray-300: #eaeaea;
+$lightest-gray-900: #323232;
+$light-gray-75: #fafafa;
+$light-gray-300: #e1e1e1;
+$light-gray-900: #2c2c2c;
+$dark-gray-50: #252525;
+$dark-gray-100: #323232;
+$dark-gray-900: #ffffff;
+$darkest-gray-50: #080808;
+$darkest-gray-100: #1e1e1e;
+$dark-gray-900: #efefef;
+html {
+  height: 100%;
+  body {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 48px auto;
+    grid-template-columns: 48px 240px auto 304px;
+    grid-row-gap: 2px;
+    grid-column-gap: 2px;
+    header {
+      grid-row: 1;
+      grid-column: 1 / 5;
+      -webkit-app-region: drag;
+      -webkit-user-select: none;
+    }
+    .sidebar {
+      grid-row: 2;
+      grid-column: 1;
+    }
+    .left-panels {
+      grid-row: 2;
+      grid-column: 2;
+    }
+    main {
+      grid-row: 2;
+    }
+    .right-panels {
+      grid-row: 2;
+      grid-column: 4;
+    }
+  }
+}
+
+.coral--lightest {
+  background-color: $lightest-gray-300;
+  header, .sidebar, .panels {
+    background-color: $lightest-gray-75;
+    color: $lightest-gray-900;
+  }
+}
+.coral--light {
+  background-color: $light-gray-300;
+  header, .sidebar, .panels {
+    background-color: $light-gray-75;
+    color: $light-gray-900;
+  }
+}
+.coral--dark {
+  background-color: $dark-gray-50;
+  header, .sidebar, .panels {
+    background-color: $dark-gray-100;
+    color: $dark-gray-900;
+  }
+}
+.coral--darkest {
+  background-color: $darkest-gray-50;
+  header, .sidebar, .panels {
+    background-color: $darkest-gray-100;
+    color: $dark-gray-900;
+  }
+}
