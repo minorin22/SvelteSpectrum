@@ -1,0 +1,8 @@
+{
+  "svelte.plugin.svelte.compilerWarnings": {
+    "css-unused-selector": "ignore",
+    "avoid-is": "ignore",
+    "a11y-missing-content": "ignore",
+    "a11y-invalid-attribute": "ignore"
+  }
+}
