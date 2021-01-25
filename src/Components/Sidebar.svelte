@@ -21,7 +21,7 @@
 <style lang="scss" global>
 ._coral-SideNav {
   width: 32px;
-  margin: auto;
+  margin: auto!important;
   a {
     height: 32px;
     margin: 8px auto 0 auto;

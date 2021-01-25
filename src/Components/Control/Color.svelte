@@ -82,7 +82,7 @@
 }
 .selectColor {
   grid-column: 1 / 3;
-  position: absolute;
+  position: relative;
   div {
     width: 22px;
     height: 22px;

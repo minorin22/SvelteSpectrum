@@ -2,6 +2,10 @@
 </script>
 
 <div class="toolArea">
+  <div class="toolNameArea">
+    <coral-icon icon="Layers" size="XS"></coral-icon>
+    <span class="toolName">Layers</span>
+  </div>
   <div class="toolAreaContainer">
     <div class="LayerStileContainer">
       <label id="LayerStile" class="coral-Feldlabel">Style</label>
@@ -18,73 +22,73 @@
   </div>
   <div class="toolAreaContainer lockContainer">
     <label id="Lock" class="coral-Feldlabel">Lock: </label>
-    <coral-buttongroup selectionmode="multiple" labelledby="Lock>
+    <coral-buttongroup selectionmode="multiple" labelledby="Lock">
       <button is="coral-button" icon="Transparency" variant="quiet"></button>
       <button is="coral-button" icon="Brush" variant="quiet"></button>
       <button is="coral-button" icon="Move" variant="quiet"></button>
       <button is="coral-button" icon="LockClosed" variant="quiet"></button>
     </coral-buttongroup>
   </div>
-    <coral-tree>
+  <coral-tree class="layerList">
+    <coral-tree-item>
+      <coral-tree-item-content>
+        <div class="layerThumbnail"></div>
+        <div class="layerName">Group 1</div>
+        <div class="layerIcons">
+          <coral-icon icon="LockClosed"></coral-icon>
+          <coral-icon icon="Visibility"></coral-icon></div>
+      </coral-tree-item-content>
+      <coral-tree-item variant="leaf">
+        <coral-tree-item-content>
+          <div class="layerThumbnail"></div>
+          <div class="layerName">Layer 4</div>
+          <div class="layerIcons">
+            <coral-icon icon="LockClosed"></coral-icon>
+            <coral-icon icon="Visibility"></coral-icon>
+          </div></coral-tree-item-content>
+    </coral-tree-item>
       <coral-tree-item>
         <coral-tree-item-content>
           <div class="layerThumbnail"></div>
-          <div class="layerName">Group 1</div>
+          <div class="layerName">Sub Group 1</div>
           <div class="layerIcons">
             <coral-icon icon="LockClosed"></coral-icon>
-            <coral-icon icon="Visibility"></coral-icon></div>
+            <coral-icon icon="Visibility"></coral-icon>
+          </div>
         </coral-tree-item-content>
         <coral-tree-item variant="leaf">
           <coral-tree-item-content>
             <div class="layerThumbnail"></div>
-            <div class="layerName">Layer 4</div>
-            <div class="layerIcons">
-              <coral-icon icon="LockClosed"></coral-icon>
-              <coral-icon icon="Visibility"></coral-icon>
-            </div></coral-tree-item-content>
-      </coral-tree-item>
-        <coral-tree-item>
-          <coral-tree-item-content>
-            <div class="layerThumbnail"></div>
-            <div class="layerName">Sub Group 1</div>
+            <div class="layerName">Layer 3</div>
             <div class="layerIcons">
               <coral-icon icon="LockClosed"></coral-icon>
               <coral-icon icon="Visibility"></coral-icon>
             </div>
           </coral-tree-item-content>
-          <coral-tree-item variant="leaf">
-            <coral-tree-item-content>
-              <div class="layerThumbnail"></div>
-              <div class="layerName">Layer 3</div>
-              <div class="layerIcons">
-                <coral-icon icon="LockClosed"></coral-icon>
-                <coral-icon icon="Visibility"></coral-icon>
-              </div>
-            </coral-tree-item-content>
-          </coral-tree-item>
         </coral-tree-item>
       </coral-tree-item>
-        <coral-tree-item variant="leaf">
-          <coral-tree-item-content>
-            <div class="layerThumbnail"></div>
-            <div class="layerName">Layer 2</div>
-            <div class="layerIcons">
-              <coral-icon icon="LockClosed"></coral-icon>
-              <coral-icon icon="Visibility"></coral-icon>
-            </div>
-          </coral-tree-item-content>
-        </coral-tree-item>
-        <coral-tree-item variant="leaf">
-          <coral-tree-item-content>
-            <div class="layerThumbnail"></div>
-            <div class="layerName">Layer 1</div>
-            <div class="layerIcons">
-              <coral-icon icon="LockClosed"></coral-icon>
-              <coral-icon icon="Visibility"></coral-icon>
-            </div>
-          </coral-tree-item-content>
-        </coral-tree-item>
-    </coral-tree>
+    </coral-tree-item>
+      <coral-tree-item variant="leaf">
+        <coral-tree-item-content>
+          <div class="layerThumbnail"></div>
+          <div class="layerName">Layer 2</div>
+          <div class="layerIcons">
+            <coral-icon icon="LockClosed"></coral-icon>
+            <coral-icon icon="Visibility"></coral-icon>
+          </div>
+        </coral-tree-item-content>
+      </coral-tree-item>
+      <coral-tree-item variant="leaf">
+        <coral-tree-item-content>
+          <div class="layerThumbnail"></div>
+          <div class="layerName">Layer 1</div>
+          <div class="layerIcons">
+            <coral-icon icon="LockClosed"></coral-icon>
+            <coral-icon icon="Visibility"></coral-icon>
+          </div>
+        </coral-tree-item-content>
+      </coral-tree-item>
+  </coral-tree>
 </div>
 
 <style lang="scss">
@@ -103,8 +107,8 @@ form {
   display: flex;
   align-items: center;
 }
-coral-tree {
-  margin: 8px 16px;
+.layerList {
+  margin: 8px auto 8px 8px;
   coral-tree-item-content {
     display: flex;
     align-items: center;

@@ -8,7 +8,7 @@
   <coral-tablist size="L">
     <coral-tab icon="Brush">Paint</coral-tab>
     <coral-tab icon="TableEdit">Edit</coral-tab>
-    <coral-tab icon="Play">Preview</coral-tab>
+    <coral-tab icon="VideoFilled">Preview</coral-tab>
   </coral-tablist>
   </div>
 
