@@ -47,8 +47,5 @@ header {
     margin-left: auto;
     margin-right: 8px;
   }
-  coral-select {
-    width: auto;
-  }
 }
 </style>

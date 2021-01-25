@@ -45,7 +45,7 @@ html {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         grid-column-gap: 16px;
-        margin: 16px;
+        margin: 8px 16px;
       }
     }
   }
@@ -60,7 +60,7 @@ html {
   .toolArea {
     border-bottom: 2px solid $lightest-gray-300;
   }
-  #colorArea, #colorSlider, #alphaSlider, #maincolor, #subcolor {
+  #colorArea, #colorSlider, #alphaSlider, #maincolor, #subcolor, .layerThumbnail {
     border: 1px solid #eaeaea;
   }
 }
@@ -73,7 +73,7 @@ html {
   .toolArea {
     border-bottom: 2px solid $light-gray-300;
   }
-  #colorArea, #colorSlider, #alphaSlider, #maincolor, #subcolor {
+  #colorArea, #colorSlider, #alphaSlider, #maincolor, #subcolor, .layerThumbnail {
     border: 1px solid #e1e1e1;
   }
 }
@@ -86,7 +86,7 @@ html {
   .toolArea {
     border-bottom: 2px solid $dark-gray-50;
   }
-  #colorArea, #colorSlider, #alphaSlider, #maincolor, #subcolor {
+  #colorArea, #colorSlider, #alphaSlider, #maincolor, #subcolor, .layerThumbnail {
     border: 1px solid #4a4a4a;
   }
 }
@@ -99,7 +99,7 @@ html {
   .toolArea {
     border-bottom: 2px solid $darkest-gray-50;
   }
-  #colorArea, #colorSlider, #alphaSlider, #maincolor, #subcolor {
+  #colorArea, #colorSlider, #alphaSlider, #maincolor, #subcolor, .layerThumbnail {
     border: 1px solid #393939;
   }
 }

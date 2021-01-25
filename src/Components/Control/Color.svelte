@@ -4,6 +4,12 @@
 
 <div class="toolArea">
   <div class="toolAreaContainer">
+    <coral-tablist size="S">
+      <coral-tab icon="ColorWheel">Picker</coral-tab>
+      <coral-tab icon="ColorPalette">Swatch</coral-tab>
+    </coral-tablist>
+  </div>
+  <div class="toolAreaContainer" id="colorPicker">
     <div id="colorAreaContainer">
       <div id="colorArea"></div>
     </div>
