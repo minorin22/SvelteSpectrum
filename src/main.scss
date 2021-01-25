@@ -65,7 +65,7 @@ html {
 }
 
 .coral--lightest {
-  background-color: $lightest-gray-300;
+  background-color: $lightest-gray-300!important;
   header, .sidebar, .panels {
     background-color: $lightest-gray-75;
     color: $lightest-gray-900;
@@ -78,7 +78,7 @@ html {
   }
 }
 .coral--light {
-  background-color: $light-gray-300;
+  background-color: $light-gray-300!important;
   header, .sidebar, .panels {
     background-color: $light-gray-75;
     color: $light-gray-900;
@@ -91,7 +91,7 @@ html {
   }
 }
 .coral--dark {
-  background-color: $dark-gray-50;
+  background-color: $dark-gray-50!important;
   header, .sidebar, .panels {
     background-color: $dark-gray-100;
     color: $dark-gray-900;
@@ -104,7 +104,7 @@ html {
   }
 }
 .coral--darkest {
-  background-color: $darkest-gray-50;
+  background-color: $darkest-gray-50!important;
   header, .sidebar, .panels {
     background-color: $darkest-gray-100;
     color: $dark-gray-900;
