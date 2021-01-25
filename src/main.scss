@@ -45,6 +45,10 @@ html {
       overflow: auto;
     }
     .toolArea {
+      ._coral-TreeView-itemLink::before {
+        z-index: auto!important;
+        margin-top: -4px!important;
+      }
       .toolNameArea {
         display: flex;
         align-items: center;

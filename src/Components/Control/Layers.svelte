@@ -108,7 +108,7 @@ form {
   align-items: center;
 }
 .layerList {
-  margin: 8px auto 8px 8px;
+  margin: 8px;
   coral-tree-item-content {
     display: flex;
     align-items: center;
