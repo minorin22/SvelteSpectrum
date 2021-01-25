@@ -8,7 +8,7 @@
   </div>
   <div class="toolAreaContainer">
     <div class="LayerStileContainer">
-      <label id="LayerStile" class="coral-Feldlabel">Style</label>
+      <label id="LayerStile" class="coral-Feldlabel">Blending Mode</label>
       <coral-select>
         <coral-select-item value="normal" selected="">Normal</coral-select-item>
         <coral-select-item value="darken">Darken</coral-select-item>
