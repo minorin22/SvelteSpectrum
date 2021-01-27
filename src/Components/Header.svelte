@@ -1,4 +1,16 @@
 <script lang="ts">
+import { AppMode } from '../stores';
+const Modes: { [key: string]: string; }[] = [
+  {name: 'Paint', icon:'Brush'},
+  {name: 'Edit', icon:'TableEdit'},
+  {name: 'Preview', icon:'VideoFilled'}
+];
+
+function setMode() {
+  $AppMode = this.id;
+}
+
+
 
 </script>
 
@@ -6,9 +18,13 @@
   <div class="left-items">
   <button is="coral-button" variant="quietaction" icon="Home" title="Home"></button>
   <coral-tablist size="L">
-    <coral-tab icon="Brush">Paint</coral-tab>
-    <coral-tab icon="TableEdit">Edit</coral-tab>
-    <coral-tab icon="VideoFilled">Preview</coral-tab>
+  {#each Modes as Mode}
+    {#if Mode.name.toLowerCase() == $AppMode}
+      <coral-tab icon={Mode.icon} id={Mode.name.toLowerCase()} on:click={setMode} selected><coral-tab-label class="_coral-Tabs-itemLabel">{Mode.name}</coral-tab-label></coral-tab>
+    {:else}
+      <coral-tab icon={Mode.icon} id={Mode.name.toLowerCase()} on:click={setMode}><coral-tab-label class="_coral-Tabs-itemLabel">{Mode.name}</coral-tab-label></coral-tab>
+    {/if}
+  {/each}
   </coral-tablist>
   </div>
 

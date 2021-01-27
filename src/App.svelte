@@ -4,11 +4,14 @@ import Header from "./Components/Header.svelte";
 import RightPanels from "./Components/RightPanels.svelte";
 import Sidebar from "./Components/Sidebar.svelte";
 
+
+
 </script>
 <Header></Header>
 <Sidebar></Sidebar>
+
 <!--<LeftPanels></LeftPanels>-->
-<main>
+<main id="neko">
 </main>
 <RightPanels></RightPanels>
 
