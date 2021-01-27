@@ -1,10 +1,11 @@
 <script lang="ts">
+import { AppMode } from '../stores';
 import Color from "./Control/Color.svelte";
 import Layers from "./Control/Layers.svelte";
 import Transform from "./Control/Transform.svelte";
-
-import { AppMode } from '../stores';
-
+import Outline from "./Control/Outline.svelte";
+import Transition from "./Control/Transition.svelte";
+import CameraWork from './Control/CameraWork.svelte';
 
 </script>
 
@@ -13,8 +14,10 @@ import { AppMode } from '../stores';
     <Color></Color>
     <Transform></Transform>
     <Layers></Layers>
-  {:else if $AppMode == 'edit'}
-  {:else if $AppMode == 'preview'}
+  {:else if $AppMode == 'edit' || 'preview'}
+    <Transition></Transition>
+    <CameraWork></CameraWork>
+    <Outline></Outline>
   {/if}
 </div>
 

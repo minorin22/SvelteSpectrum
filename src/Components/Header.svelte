@@ -20,9 +20,13 @@ function setMode() {
   <coral-tablist size="L">
   {#each Modes as Mode}
     {#if Mode.name.toLowerCase() == $AppMode}
-      <coral-tab icon={Mode.icon} id={Mode.name.toLowerCase()} on:click={setMode} selected><coral-tab-label class="_coral-Tabs-itemLabel">{Mode.name}</coral-tab-label></coral-tab>
+      <coral-tab icon={Mode.icon} id={Mode.name.toLowerCase()} on:click={setMode} selected>
+        <coral-tab-label class="_coral-Tabs-itemLabel">{Mode.name}</coral-tab-label>
+      </coral-tab>
     {:else}
-      <coral-tab icon={Mode.icon} id={Mode.name.toLowerCase()} on:click={setMode}><coral-tab-label class="_coral-Tabs-itemLabel">{Mode.name}</coral-tab-label></coral-tab>
+      <coral-tab icon={Mode.icon} id={Mode.name.toLowerCase()} on:click={setMode}>
+        <coral-tab-label class="_coral-Tabs-itemLabel">{Mode.name}</coral-tab-label>
+      </coral-tab>
     {/if}
   {/each}
   </coral-tablist>
