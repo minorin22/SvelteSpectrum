@@ -8,20 +8,20 @@
   </div>
   <div class="toolAreaContainer">
     <div class="LayerStileContainer">
-      <label id="LayerStile" class="coral-Feldlabel">Blending Mode</label>
-      <coral-select>
+      <label for="LayerStile" class="coral-FieldLabel">Blending Mode</label>
+      <coral-select labelledby="LayerStile">
         <coral-select-item value="normal" selected="">Normal</coral-select-item>
         <coral-select-item value="darken">Darken</coral-select-item>
         <coral-select-item value="multiply">Multiply</coral-select-item>
       </coral-select>
     </div>
     <form class="coral-Form coral-Form--vertical">
-      <label id="Opacity" class="coral-Fieldlabel">Opacity</label>
+      <label for="Opacity" class="coral-FieldLabel">Opacity</label>
       <coral-numberinput labelledby="Opacity" value="100" max="100" min="0"></coral-numberinput>
     </form>
   </div>
   <div class="toolAreaContainer lockContainer">
-    <label id="Lock" class="coral-Feldlabel">Lock: </label>
+    <label for="Lock" class="coral-FieldLabel">Lock: </label>
     <coral-buttongroup selectionmode="multiple" labelledby="Lock">
       <button is="coral-button" icon="Transparency" variant="quiet"></button>
       <button is="coral-button" icon="Brush" variant="quiet"></button>

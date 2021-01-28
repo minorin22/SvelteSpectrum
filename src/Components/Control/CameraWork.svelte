@@ -6,7 +6,7 @@
     <coral-icon icon="MovieCamera" size="XS"></coral-icon>
     <span class="toolName">Camera Wrok</span>
   </div>
-  <div class="transformContainer">
+  <div class="cameraWorkContainer">
     <label for="inputContainer" class="coral-FieldLabel coral-FieldLabel--left">POSITION</label>
     <div class="inputContainer">
       <label for="inX" class="coral-FieldLabel coral-FieldLabel--left">IN</label>
@@ -16,7 +16,7 @@
       <input type="text" is="coral-textfield" id="inY" variant="quiet">
     </div>
   </div>
-  <div class="transformContainer">
+  <div class="cameraWorkContainer">
     <div class="inputContainer">
       <label for="outX" class="coral-FieldLabel coral-FieldLabel--left">OUT</label>
       <label for="outX" class="coral-FieldLabel coral-FieldLabel--left">X</label>
@@ -25,9 +25,9 @@
       <input type="text" is="coral-textfield" id="outY" variant="quiet">
     </div>
   </div>
-  <div class="transformContainer">
+  <div class="cameraWorkContainer">
     <div class="inputContainer">
-      <label for="sizeIn" class="coral-FieldLabel coral-FieldLabel--left">SIZE</label>
+      <label for="sizeIn" class="coral-FieldLabel coral-FieldLabel--left">SCALE</label>
       <label for="sizeIn" class="coral-FieldLabel coral-FieldLabel--left">IN</label>
       <input type="text" is="coral-textfield" id="sizeIn" variant="quiet">
       <label for="sizeOut" class="coral-FieldLabel coral-FieldLabel--left">OUT</label>
@@ -37,7 +37,7 @@
 </div>
 
 <style lang="scss">
-.transformContainer {
+.cameraWorkContainer {
   margin: 8px 16px;
   label {
     margin-left: 8px;
@@ -45,11 +45,11 @@
   }
   .inputContainer {
     label {
-      width: 9%;
+      width: 10%;
       margin-left: 8px;
     }
     input {
-      width: 28%;
+      width: 26%;
   }
   }
 }

@@ -1,7 +1,9 @@
 <script lang="ts">
+import { AppMode } from './stores';
 import Header from "./Components/Header.svelte";
+import Preview from './Components/Preview.svelte';
 //import LeftPanels from "./Components/LeftPanels.svelte";
-import RightPanels from "./Components/RightPanels.svelte";
+import Panels from "./Components/Panels.svelte";
 import Sidebar from "./Components/Sidebar.svelte";
 
 
@@ -10,10 +12,12 @@ import Sidebar from "./Components/Sidebar.svelte";
 <Header></Header>
 <Sidebar></Sidebar>
 
-<!--<LeftPanels></LeftPanels>-->
-<main id="neko">
+<main>
+  {#if $AppMode == 'preview'}
+    <Preview></Preview>
+  {/if}
 </main>
-<RightPanels></RightPanels>
+<Panels></Panels>
 
 <style lang="scss" global>
 @import "main.scss";

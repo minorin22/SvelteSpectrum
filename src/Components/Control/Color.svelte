@@ -56,7 +56,7 @@
 #colorSlider {
   grid-column: 9 / 11;
   border-radius: 4px;
-  background: linear-gradient(to bottom, rgb(255, 0, 0) 0%, rgb(255, 255, 0) 17%, rgb(0, 255, 0) 33%, rgb(0, 255, 255) 50%, rgb(0, 0, 255) 67%, rgb(255, 0, 255) 83%, rgb(255, 0, 0) 100%);
+  background: linear-gradient(to top, rgb(255, 0, 0) 0%, rgb(255, 255, 0) 17%, rgb(0, 255, 0) 33%, rgb(0, 255, 255) 50%, rgb(0, 0, 255) 67%, rgb(255, 0, 255) 83%, rgb(255, 0, 0) 100%);
 }
 #alphaSlider {
   position: relative;
@@ -76,7 +76,7 @@
     z-index: 1;
     width: 100%;
     height: 100%;
-    border-radius: 4px;
+    border-radius: 3px;
     background-image: linear-gradient(to bottom, #ff0000 0%, rgba(0, 0, 0, 0) 100%);
   }
 }
