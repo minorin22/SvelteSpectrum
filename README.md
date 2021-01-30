@@ -3,8 +3,11 @@
 ---
 
 # Svelte Spectrum
+![Paint](https://pbs.twimg.com/media/Es8_KtGVEAI1Oot?format=jpg&name=4096x4096)
 
-Adobe Spectrum design template for Svelte with TypeScript and SCSS.
+![Preview](https://pbs.twimg.com/media/Es8_PWyVEAI1Tfo?format=jpg&name=4096x4096)
+
+[Adobe Spectrum](https://github.com/adobe/coral-spectrum) design template for Svelte with TypeScript and SCSS.
 
 *Note that you will need to have [Node.js](https://nodejs.org) installed.*
 
