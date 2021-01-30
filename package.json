@@ -1,11 +1,12 @@
 {
-  "name": "svelte-app",
+  "name": "svelte-spectrum",
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public",
-    "validate": "svelte-check"
+    "validate": "svelte-check",
+    "icon": "cp -r node_modules/@adobe/coral-spectrum/dist/resources public/"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",

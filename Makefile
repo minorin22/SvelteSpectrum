@@ -2,7 +2,7 @@ build:
 	npm run build
 
 icon:
-	cp -r node_modules/@adobe/coral-spectrum/dist/resources public/
+	npm run icon
 
 dev:
 	npm run dev
