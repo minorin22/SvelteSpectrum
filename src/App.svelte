@@ -2,7 +2,6 @@
 import { AppMode } from './stores';
 import Header from "./Components/Header.svelte";
 import Preview from './Components/Preview.svelte';
-//import LeftPanels from "./Components/LeftPanels.svelte";
 import Panels from "./Components/Panels.svelte";
 import Sidebar from "./Components/Sidebar.svelte";
 

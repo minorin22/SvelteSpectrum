@@ -89,6 +89,15 @@
         </coral-tree-item-content>
       </coral-tree-item>
   </coral-tree>
+  <div class="toolAreaContainer lockContainer">
+    <label for="Actions" class="coral-FieldLabel">Actions: </label>
+    <coral-buttongroup selectionmode="multiple" id="Actions">
+      <button is="coral-button" icon="Effects" variant="quiet"></button>
+      <button is="coral-button" icon="Folder" variant="quiet"></button>
+      <button is="coral-button" icon="Add" variant="quiet"></button>
+      <button is="coral-button" icon="Delete" variant="quiet"></button>
+    </coral-buttongroup>
+  </div>
 </div>
 
 <style lang="scss">
@@ -106,6 +115,13 @@ form {
 .lockContainer {
   display: flex;
   align-items: center;
+  justify-content: center;
+  label {
+    margin-right: auto;
+  }
+  coral-buttongroup {
+    margin-right: 20%;
+  }
 }
 .layerList {
   margin: 8px;
