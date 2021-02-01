@@ -1,5 +1,6 @@
 <script lang="ts">
 import { AppMode } from '../stores';
+import { onMount } from 'svelte';
 const Modes: { [key: string]: string; }[] = [
   {name: 'Paint', icon:'Brush'},
   {name: 'Edit', icon:'TableEdit'},
@@ -10,6 +11,9 @@ function setMode() {
   $AppMode = this.id;
 }
 
+onMount(()=>{
+  document.getElementById($AppMode).setAttribute('selected', '"');
+});
 
 
 </script>
@@ -19,15 +23,9 @@ function setMode() {
   <button is="coral-button" variant="quietaction" icon="Home" title="Home"></button>
   <coral-tablist size="L">
   {#each Modes as Mode}
-    {#if Mode.name.toLowerCase() == $AppMode}
-      <coral-tab icon={Mode.icon} id={Mode.name.toLowerCase()} on:click={setMode} selected>
-        <coral-tab-label class="_coral-Tabs-itemLabel">{Mode.name}</coral-tab-label>
-      </coral-tab>
-    {:else}
-      <coral-tab icon={Mode.icon} id={Mode.name.toLowerCase()} on:click={setMode}>
-        <coral-tab-label class="_coral-Tabs-itemLabel">{Mode.name}</coral-tab-label>
-      </coral-tab>
-    {/if}
+    <coral-tab icon={Mode.icon} id={Mode.name.toLowerCase()} on:click={setMode}>
+      <coral-tab-label class="_coral-Tabs-itemLabel">{Mode.name}</coral-tab-label>
+    </coral-tab>
   {/each}
   </coral-tablist>
   </div>

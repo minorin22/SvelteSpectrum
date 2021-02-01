@@ -77,6 +77,9 @@ html {
   #colorArea, #colorSlider, #alphaSlider, #maincolor, #subcolor, .layerThumbnail {
     border: 1px solid #eaeaea;
   }
+  .ColorHandle {
+    box-shadow: 0 0 0 1px #eaeaea, 0 0 0 2px #ffffff, 0 0 0 3px #eaeaea;
+  }
 }
 .coral--light {
   background-color: $light-gray-300!important;
@@ -89,6 +92,9 @@ html {
   }
   #colorArea, #colorSlider, #alphaSlider, #maincolor, #subcolor, .layerThumbnail {
     border: 1px solid #e1e1e1;
+  }
+  .ColorHandle {
+    box-shadow: 0 0 0 1px #e1e1e1, 0 0 0 2px #ffffff, 0 0 0 3px #e1e1e1;
   }
 }
 .coral--dark {
@@ -103,6 +109,9 @@ html {
   #colorArea, #colorSlider, #alphaSlider, #maincolor, #subcolor, .layerThumbnail {
     border: 1px solid #4a4a4a;
   }
+  .ColorHandle {
+    box-shadow: 0 0 0 1px #4a4a4a, 0 0 0 2px #ffffff, 0 0 0 3px #4a4a4a;
+  }
 }
 .coral--darkest {
   background-color: $darkest-gray-50!important;
@@ -115,5 +124,8 @@ html {
   }
   #colorArea, #colorSlider, #alphaSlider, #maincolor, #subcolor, .layerThumbnail {
     border: 1px solid #393939;
+  }
+  .ColorHandle {
+    box-shadow: 0 0 0 1px #393939, 0 0 0 2px #ffffff, 0 0 0 3px #393939;
   }
 }

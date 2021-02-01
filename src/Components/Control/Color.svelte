@@ -1,5 +1,4 @@
 <script lang="ts">
-
 </script>
 
 <div class="toolArea">
@@ -11,7 +10,11 @@
   </div>
   <div class="toolAreaContainer" id="colorPicker">
     <div id="colorAreaContainer">
-      <div id="colorArea"></div>
+      <div id="colorArea">
+        <div coral-dragaction="" coral-dragaction-containment="" class="ColorHandleContainer">
+          <div class="ColorHandle"></div>
+        </div>
+      </div>
     </div>
     <div id="colorSlider"></div>
     <div id="alphaSlider">
@@ -50,6 +53,7 @@
     right: 0;
     border-radius: 4px;
     background-color: #ff0000;
+    overflow: scroll;
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0)),linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0));
   }
 }
@@ -79,6 +83,16 @@
     border-radius: 3px;
     background-image: linear-gradient(to bottom, #ff0000 0%, rgba(0, 0, 0, 0) 100%);
   }
+}
+.ColorHandleContainer {
+  width: 0;
+  height: 0;
+}
+.ColorHandle {
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
 }
 .selectColor {
   grid-column: 1 / 3;
