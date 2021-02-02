@@ -8,7 +8,6 @@ import Transition from "./Control/Transition.svelte";
 import CameraWork from './Control/CameraWork.svelte';
 import Dialogue from './Control/Dialogue.svelte';
 import Media from './Control/Media.svelte';
-
 </script>
 
 <div class="panels">

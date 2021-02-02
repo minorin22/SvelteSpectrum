@@ -77,8 +77,9 @@ html {
   #colorArea, #colorSlider, #alphaSlider, #maincolor, #subcolor, .layerThumbnail {
     border: 1px solid #eaeaea;
   }
-  .ColorHandle {
-    box-shadow: 0 0 0 1px #eaeaea, 0 0 0 2px #ffffff, 0 0 0 3px #eaeaea;
+  #colorsquare-picker, #hue-picker, #alpha-picker {
+    border: 2px solid #eaeaea;
+    box-shadow: 0 0 0 2px #393939aa;
   }
 }
 .coral--light {
@@ -93,8 +94,9 @@ html {
   #colorArea, #colorSlider, #alphaSlider, #maincolor, #subcolor, .layerThumbnail {
     border: 1px solid #e1e1e1;
   }
-  .ColorHandle {
-    box-shadow: 0 0 0 1px #e1e1e1, 0 0 0 2px #ffffff, 0 0 0 3px #e1e1e1;
+  #colorsquare-picker, #hue-picker, #alpha-picker {
+    border: 2px solid #e1e1e1;
+    box-shadow: 0 0 0 2px #4a4a4aaa;
   }
 }
 .coral--dark {
@@ -109,8 +111,9 @@ html {
   #colorArea, #colorSlider, #alphaSlider, #maincolor, #subcolor, .layerThumbnail {
     border: 1px solid #4a4a4a;
   }
-  .ColorHandle {
-    box-shadow: 0 0 0 1px #4a4a4a, 0 0 0 2px #ffffff, 0 0 0 3px #4a4a4a;
+  #colorsquare-picker, #hue-picker, #alpha-picker {
+    border: 2px solid #4a4a4a;
+    box-shadow: 0 0 0 2px #e1e1e1;
   }
 }
 .coral--darkest {
@@ -125,7 +128,8 @@ html {
   #colorArea, #colorSlider, #alphaSlider, #maincolor, #subcolor, .layerThumbnail {
     border: 1px solid #393939;
   }
-  .ColorHandle {
-    box-shadow: 0 0 0 1px #393939, 0 0 0 2px #ffffff, 0 0 0 3px #393939;
+  #colorsquare-picker, #hue-picker, #alpha-picker {
+    border: 2px solid #393939;
+    box-shadow: 0 0 0 2px #eaeaea;
   }
 }
