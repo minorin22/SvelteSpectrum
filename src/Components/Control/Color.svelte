@@ -3,10 +3,14 @@ import {onMount,createEventDispatcher} from 'svelte';
 import { mainColor,subColor,alpha,isMainOrSub } from '../../stores';
 
 export let startColor: string;
+let alpha100: string;
+$: alpha100 = Math.round($alpha * 100) + "%";
 let mainColorElement: HTMLElement;
 let subColorElement: HTMLElement;
 let mainSelectedColor: HTMLElement;
 let subSelectedColor: HTMLElement;
+let alphaInput: HTMLElement;
+let hexInput: HTMLElement;
 ($isMainOrSub)?startColor = $mainColor:startColor = $subColor;
 onMount(() => {
  document.addEventListener("mouseup", mouseUp);
@@ -20,6 +24,10 @@ onMount(() => {
  subColorElement = document.getElementById('subcolor');
  mainSelectedColor = document.querySelector('.mainSelectedColor');
  subSelectedColor = document.querySelector('.subSelectedColor');
+ alphaInput = document.querySelector('#alphaInput');
+ hexInput = document.querySelector('#hexInput');
+ alphaInput.addEventListener('keypress', setAlpha);
+ hexInput.addEventListener('keypress', setColor);
  mainSelectedColor.style.background = $mainColor;
  subSelectedColor.style.background = $subColor;
  if($isMainOrSub){
@@ -35,8 +43,6 @@ onMount(() => {
    startColor = $mainColor;
    $isMainOrSub = true;
    setStartColor();
-   //colorChange();
-   //hueChange();
  }
  subColorElement.onclick = ()=> {
    mainColorElement.style.zIndex = '0';
@@ -44,8 +50,6 @@ onMount(() => {
    startColor = $subColor;
    $isMainOrSub = false;
    setStartColor();
-   //colorChange();
-   //hueChange();
  }
 });
 
@@ -58,18 +62,59 @@ let tracked;
 let h: number = 1;
 let s: number = 1;
 let v: number = 1;
-//let a: number = $alpha;
 let r: number = 255;
 let g: number = 0;
 let b: number = 0;
-let hexValue: string = '#FF0000';
+let hexValue: string;
+
+const setAlpha = (e)=>{
+  let a: number;
+  if (e.keyCode === 13 || e.keyCode === 9) {
+    if (alpha100.match(/[0-9]/)) a = parseInt(alpha100, 10) / 100;
+    if (a < 0) a = 0;
+    if (a > 1) a = 1;
+    $alpha = a;
+    updateAlphaPicker();
+    colorChange();
+  }
+}
+
+const setColor = (e)=>{
+  if (e.keyCode === 13 || e.keyCode === 9) {
+    if ($isMainOrSub) {
+      $mainColor = hexValue;
+      startColor = $mainColor;
+    } else {
+      $subColor = hexValue;
+      startColor = $subColor;
+    }
+    setStartColor();
+  }
+}
 
 
 function setStartColor() {
   let hex: string = startColor.replace('#','');
-  if (hex.length !== 6 && hex.length !== 3 && !hex.match(/([^A-F0-9])/gi)) {
+  if (hex.match(/([^A-F0-9])/gi)) {
     alert('Invalid property value (startColor)');
     return;
+  }
+  switch (hex.length){
+    case 0:
+      hex = '000';
+      break;
+    case 1:
+      hex += '00';
+      break;
+    case 2:
+      hex += '0';
+      break;
+    case 4:
+      hex += '00';
+      break;
+    case 5:
+      hex += '0';
+      break;
   }
   let hexFiltered: string='';
   if (hex.length === 3)
@@ -293,8 +338,10 @@ function hueDownTouch(event) {
 
 function hueChange() {
  let rgb: number[] = hsvToRgb(h, 1, 1)
- let colorArea: HTMLElement = document.querySelector("#colorArea")
+ let colorArea: HTMLElement = document.querySelector("#colorArea");
+ let picker: HTMLElement = document.querySelector("#hue-picker");
  colorArea.style.background = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},1)`;
+ picker.style.background = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},1)`;
  colorChange();
 }
 
@@ -305,6 +352,10 @@ function colorChange() {
  b = rgb[2];
  hexValue = RGBAToHex();
  let alphaSliderColor: HTMLElement = document.querySelector("#alphaSliderColor");
+ let alphaPicker: HTMLElement = document.querySelector("#alpha-picker");
+ let colorsquarePicker: HTMLElement = document.querySelector("#colorsquare-picker");
+ alphaPicker.style.background = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${$alpha})`;
+ colorsquarePicker.style.background = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},1)`;
  alphaSliderColor.style.background = `linear-gradient(to bottom, rgba(${rgb[0]},${rgb[1]},${rgb[2]},1) 0%, rgba(0, 0, 0, 0) 100%)`;
  if ($isMainOrSub){
   let mainSelectedColor: HTMLElement = document.querySelector('.mainSelectedColor');
@@ -478,7 +529,7 @@ function rgbToHSV(r, g, b, update) {
       </div>
     </div>
   </div>
-  <div class="toolAreaContainer">
+  <div class="colorSelectContainer">
     <div class="selectColor">
       <div id="maincolor">
         <div class="mainSelectedColor"></div>
@@ -487,13 +538,9 @@ function rgbToHSV(r, g, b, update) {
         <div class="subSelectedColor"></div>
       </div>
     </div>
-    <coral-select variant="quiet">
-      <coral-select-item value="hex" selected="">Hex</coral-select-item>
-      <coral-select-item value="rgb">RGB</coral-select-item>
-      <coral-select-item value="hsv">HSV</coral-select-item>
-    </coral-select>
-    <input type="text" is="coral-textfield" readonly variant="quiet" aria-label="text input" value={hexValue}>
-    <input type="text" is="coral-textfield" readonly variant="quiet" aria-label="text input" value={Math.round($alpha * 100) + "%"}>
+    <label for="hexInput" class="coral-FieldLabel">Hex: </label>
+    <input type="text" is="coral-textfield" variant="quiet" aria-label="text input" bind:value={hexValue} id="hexInput">
+    <input type="text" is="coral-textfield" variant="quiet" aria-label="text input" bind:value={alpha100} id="alphaInput">
   </div>
 </div>
 <style lang="scss">
@@ -520,7 +567,6 @@ function rgbToHSV(r, g, b, update) {
     right: 0;
     border-radius: 4px;
     background: #ff0000;
-    overflow: scroll;
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0)),linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0));
     .saturation-gradient {
       background: linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0));
@@ -529,7 +575,6 @@ function rgbToHSV(r, g, b, update) {
     }
     .value-gradient {
       background: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0));
-      overflow: hidden;
       width: 176px;
       height: 176px;
     }
@@ -562,58 +607,66 @@ function rgbToHSV(r, g, b, update) {
     background-image: linear-gradient(to bottom, #ff0000 0%, rgba(0, 0, 0, 0) 100%);
   }
 }
-.selectColor {
-  grid-column: 1 / 3;
-  position: relative;
-  div {
-    width: 22px;
-    height: 22px;
-    border-radius: 2px;
+.colorSelectContainer {
+  display: flex;
+  align-items: center;
+  margin: 16px;
+  .selectColor {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    margin-right: 16px;
+    div {
+      width: 22px;
+      height: 22px;
+      border-radius: 2px;
+    }
+    .mainSelectedColor, .subSelectedColor {
+      width: 100%;
+      height: 100%;
+      border-radius: 2px;
+    }
+    #maincolor {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      background: rgb(204, 204, 204);
+      background-image:
+        linear-gradient(45deg, rgb(255, 255, 255) 25%, transparent 0),
+        linear-gradient(45deg, transparent 75%, rgb(255, 255, 255) 0),
+        linear-gradient(45deg, rgb(255, 255, 255) 25%, transparent 0),
+        linear-gradient(45deg, transparent 75%, rgb(255, 255, 255) 0);
+      background-size: 16px 16px;
+      background-position: 0 0, 8px 8px, 8px 8px, 16px 16px;
+    }
+    #subcolor {
+      position: absolute;
+      cursor: pointer;
+      top: 10px;
+      left: 10px;
+      background: rgb(204, 204, 204);
+      background-image:
+        linear-gradient(45deg, rgb(255, 255, 255) 25%, transparent 0),
+        linear-gradient(45deg, transparent 75%, rgb(255, 255, 255) 0),
+        linear-gradient(45deg, rgb(255, 255, 255) 25%, transparent 0),
+        linear-gradient(45deg, transparent 75%, rgb(255, 255, 255) 0);
+      background-size: 16px 16px;
+      background-position: 0 0, 8px 8px, 8px 8px, 16px 16px;
+    }
   }
-  .mainSelectedColor, .subSelectedColor {
-    width: 100%;
-    height: 100%;
-    border-radius: 2px;
+  label {
+    margin-right: 16px;
   }
-  #maincolor {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: rgb(204, 204, 204);
-    background-image:
-      linear-gradient(45deg, rgb(255, 255, 255) 25%, transparent 0),
-      linear-gradient(45deg, transparent 75%, rgb(255, 255, 255) 0),
-      linear-gradient(45deg, rgb(255, 255, 255) 25%, transparent 0),
-      linear-gradient(45deg, transparent 75%, rgb(255, 255, 255) 0);
-    background-size: 16px 16px;
-    background-position: 0 0, 8px 8px, 8px 8px, 16px 16px;
-  }
-  #subcolor {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: rgb(204, 204, 204);
-    background-image:
-      linear-gradient(45deg, rgb(255, 255, 255) 25%, transparent 0),
-      linear-gradient(45deg, transparent 75%, rgb(255, 255, 255) 0),
-      linear-gradient(45deg, rgb(255, 255, 255) 25%, transparent 0),
-      linear-gradient(45deg, transparent 75%, rgb(255, 255, 255) 0);
-    background-size: 16px 16px;
-    background-position: 0 0, 8px 8px, 8px 8px, 16px 16px;
-  }
-}
-coral-select {
-  grid-column: 3 / 5;
-  width: 100%;
-}
-input {
-  &:nth-of-type(1) {
-    grid-column: 6 / 10;
-    width: 100%;
-  }
-  &:nth-of-type(2) {
-    grid-column: 10 / 13;
-    width: 100%;
+  input {
+    &:nth-of-type(1) {
+      width: 36%;
+      margin-right: 16px;
+    }
+    &:nth-of-type(2) {
+      width: 24%;
+      margin-right: 16px;
+    }
   }
 }
 
@@ -624,14 +677,14 @@ input {
   border-radius: 50%;
   left: 50%;
   position: relative;
-  transform: translate(-7px, -7px);
+  transform: translate(-6px, -7px);
 }
 
 #hue-event {
   width: 32px;
   height: 158px;
   cursor: pointer;
-  transform: translate(-7px, -12px);
+  transform: translate(-6px, -12px);
   touch-action: none;
 }
 
@@ -642,14 +695,14 @@ input {
   border-radius: 50%;
   left: 50%;
   position: relative;
-  transform: translate(-7px, -7px);
+  transform: translate(-6px, -7px);
 }
 
 #alpha-event {
   width: 32px;
   height: 158px;
   cursor: pointer;
-  transform: translate(-7px, -12px);
+  transform: translate(-6px, -12px);
   touch-action: none;
 }
 
@@ -660,7 +713,7 @@ input {
   height: 12px;
   border-radius: 50%;
   position: relative;
-  transform: translate(-9px, -9px);
+  transform: translate(-6px, -6px);
   left: 100%;
 }
 
@@ -669,7 +722,7 @@ input {
   height: 100%;
   cursor: pointer;
   position: relative;
-  transform: translate(0, -16px);
+  transform: translate(0, -12px);
   touch-action: none;
 }
 </style>

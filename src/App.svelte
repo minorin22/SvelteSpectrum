@@ -1,11 +1,14 @@
 <script lang="ts">
+import { onMount } from 'svelte';
 import { AppMode } from './stores';
 import Header from "./Components/Header.svelte";
 import Preview from './Components/Preview.svelte';
 import Panels from "./Components/Panels.svelte";
 import Sidebar from "./Components/Sidebar.svelte";
 
-
+onMount(()=>{
+  document.querySelector('body').classList.add('coral--light');
+});
 
 </script>
 <Header></Header>
