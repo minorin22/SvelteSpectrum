@@ -7,9 +7,9 @@
     <span class="toolName">Layers</span>
   </div>
   <div class="toolAreaContainer">
-    <div class="LayerStileContainer">
-      <label for="LayerStile" class="coral-FieldLabel">Blending Mode</label>
-      <coral-select labelledby="LayerStile">
+    <div class="BlendingModeContainer">
+      <label for="BlendingMode" class="coral-FieldLabel">Blending Mode</label>
+      <coral-select labelledby="BlendingMode">
         <coral-select-item value="normal" selected="">Normal</coral-select-item>
         <coral-select-item value="darken">Darken</coral-select-item>
         <coral-select-item value="multiply">Multiply</coral-select-item>
@@ -101,7 +101,7 @@
 </div>
 
 <style lang="scss">
-.LayerStileContainer {
+.BlendingModeContainer {
   grid-column: 1 / 8;
   width: 100%;
 }

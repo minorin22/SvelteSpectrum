@@ -26,7 +26,7 @@ SOFTWARE.
 
 <script lang="ts">
 import {onMount,createEventDispatcher} from 'svelte';
-import { mainColor,subColor,alpha,isMainOrSub } from '../../stores';
+import { mainColor,subColor,alpha,isMainOrSub,isPickerOrSwatch } from '../../stores';
 
 export let startColor: string;
 let alpha100: string;
@@ -37,6 +37,10 @@ let mainSelectedColor: HTMLElement;
 let subSelectedColor: HTMLElement;
 let alphaInput: HTMLElement;
 let hexInput: HTMLElement;
+let pickerTab: HTMLElement;
+let swatchTab: HTMLElement;
+let pickerAreaContainer: HTMLElement;
+let swatchAreaContainer: HTMLElement;
 ($isMainOrSub)?startColor = $mainColor:startColor = $subColor;
 onMount(() => {
  document.addEventListener("mouseup", mouseUp);
@@ -52,8 +56,14 @@ onMount(() => {
  subSelectedColor = document.querySelector('.subSelectedColor');
  alphaInput = document.querySelector('#alphaInput');
  hexInput = document.querySelector('#hexInput');
+ pickerTab = document.querySelector('#pickerTab');
+ swatchTab = document.querySelector('#swatchTab');
+ pickerAreaContainer = document.querySelector('#pickerAreaContainer');
+ swatchAreaContainer = document.querySelector('#swatchAreaContainer')
  alphaInput.addEventListener('keypress', setAlpha);
  hexInput.addEventListener('keypress', setColor);
+ pickerTab.addEventListener('click', setPicker);
+ swatchTab.addEventListener('click', setSwatch);
  mainSelectedColor.style.background = $mainColor;
  subSelectedColor.style.background = $subColor;
  if($isMainOrSub){
@@ -76,6 +86,13 @@ onMount(() => {
    startColor = $subColor;
    $isMainOrSub = false;
    setStartColor();
+ }
+ if ($isPickerOrSwatch){
+   pickerTab.setAttribute('selected', '"');
+   swatchAreaContainer.style.display = "none";
+ } else {
+   swatchTab.setAttribute('selected', '"');
+   pickerAreaContainer.style.display = "none";
  }
 });
 
@@ -118,6 +135,17 @@ const setColor = (e)=>{
   }
 }
 
+const setPicker = ()=>{
+  $isPickerOrSwatch = true;
+  pickerAreaContainer.style.display = "grid";
+  swatchAreaContainer.style.display = "none";
+}
+
+const setSwatch = ()=>{
+  $isPickerOrSwatch = false;
+  pickerAreaContainer.style.display = "none";
+  swatchAreaContainer.style.display = "grid";
+}
 
 function setStartColor() {
   let hex: string = startColor.replace('#','');
@@ -529,11 +557,11 @@ function rgbToHSV(r, g, b, update) {
 <div class="toolArea">
   <div class="toolAreaContainer">
     <coral-tablist size="S">
-      <coral-tab icon="ColorWheel">Picker</coral-tab>
-      <coral-tab icon="ColorPalette">Swatch</coral-tab>
+      <coral-tab icon="ColorWheel" id="pickerTab">Picker</coral-tab>
+      <coral-tab icon="ColorPalette" id="swatchTab">Swatch</coral-tab>
     </coral-tablist>
   </div>
-  <div class="toolAreaContainer" id="colorPicker">
+  <div class="toolAreaContainer" id="pickerAreaContainer">
     <div id="colorAreaContainer">
       <div id="colorArea">
         <div class="saturation-gradient">
@@ -555,14 +583,39 @@ function rgbToHSV(r, g, b, update) {
       </div>
     </div>
   </div>
+  <div id="swatchAreaContainer">
+    <coral-select>
+      <coral-select-item value="default" selected="">Default</coral-select-item>
+      <coral-select-item value="original1">Original1</coral-select-item>
+      <coral-select-item value="original2">Original2</coral-select-item>
+    </coral-select>
+    <coral-buttongroup class="swatchAction">
+      <button is="coral-button" icon="SaveTo" variant="quiet"></button>
+      <button is="coral-button" icon="AssetsAdded" variant="quiet"></button>
+      <button is="coral-button" icon="Delete" variant="quiet"></button>
+    </coral-buttongroup>
+    <button class="colorSwatch"></button>
+    <button class="colorSwatch"></button>
+    <button class="colorSwatch"></button>
+    <button class="colorSwatch"></button>
+    <button class="colorSwatch"></button>
+    <button class="colorSwatch"></button>
+    <button class="colorSwatch"></button>
+    <button class="colorSwatch"></button>
+    <button class="colorSwatch"></button>
+    <button class="colorSwatch"></button>
+    <coral-buttongroup>
+      <button is="coral-button" icon="AddToSelection" variant="quiet"></button>
+    </coral-buttongroup>
+  </div>
   <div class="colorSelectContainer">
     <div class="selectColor">
-      <div id="maincolor">
+      <button id="maincolor" class="colorSwatch">
         <div class="mainSelectedColor"></div>
-      </div>
-      <div id="subcolor">
+      </button>
+      <button id="subcolor" class="colorSwatch">
         <div class="subSelectedColor"></div>
-      </div>
+      </button>
     </div>
     <label for="hexInput" class="coral-FieldLabel">Hex: </label>
     <input type="text" is="coral-textfield" variant="quiet" aria-label="text input" bind:value={hexValue} id="hexInput">
@@ -642,10 +695,10 @@ function rgbToHSV(r, g, b, update) {
     width: 32px;
     height: 32px;
     margin-right: 16px;
-    div {
-      width: 22px;
-      height: 22px;
-      border-radius: 2px;
+    button {
+      width: 24px;
+      height: 24px;
+      border-radius: 2px!important;
     }
     .mainSelectedColor, .subSelectedColor {
       width: 100%;
@@ -657,28 +710,12 @@ function rgbToHSV(r, g, b, update) {
       cursor: pointer;
       top: 0;
       left: 0;
-      background: rgb(204, 204, 204);
-      background-image:
-        linear-gradient(45deg, rgb(255, 255, 255) 25%, transparent 0),
-        linear-gradient(45deg, transparent 75%, rgb(255, 255, 255) 0),
-        linear-gradient(45deg, rgb(255, 255, 255) 25%, transparent 0),
-        linear-gradient(45deg, transparent 75%, rgb(255, 255, 255) 0);
-      background-size: 16px 16px;
-      background-position: 0 0, 8px 8px, 8px 8px, 16px 16px;
     }
     #subcolor {
       position: absolute;
       cursor: pointer;
       top: 10px;
       left: 10px;
-      background: rgb(204, 204, 204);
-      background-image:
-        linear-gradient(45deg, rgb(255, 255, 255) 25%, transparent 0),
-        linear-gradient(45deg, transparent 75%, rgb(255, 255, 255) 0),
-        linear-gradient(45deg, rgb(255, 255, 255) 25%, transparent 0),
-        linear-gradient(45deg, transparent 75%, rgb(255, 255, 255) 0);
-      background-size: 16px 16px;
-      background-position: 0 0, 8px 8px, 8px 8px, 16px 16px;
     }
   }
   label {
@@ -696,6 +733,46 @@ function rgbToHSV(r, g, b, update) {
   }
 }
 
+#swatchAreaContainer {
+  margin: 8px 16px;
+  height: 176px;
+  overflow: auto;
+  display: grid;
+  grid-auto-rows: 24px;
+  grid-template-columns: repeat(6, 32px);
+  grid-row-gap: 16px;
+  grid-column-gap: 16px;
+  coral-select {
+    grid-column: 1 / 4;
+  }
+  .swatchAction {
+    grid-column: 4 / 7;
+    width: 100%;
+    button {
+      margin: auto 16px auto 0!important;
+    }
+  }
+  coral-buttongroup {
+    align-items: center;
+  }
+}
+.colorSwatch {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border-radius: 1px!important;
+  cursor: pointer;
+  background: rgb(204, 204, 204);
+  background-image:
+    linear-gradient(45deg, rgb(255, 255, 255) 25%, transparent 0),
+    linear-gradient(45deg, transparent 75%, rgb(255, 255, 255) 0),
+    linear-gradient(45deg, rgb(255, 255, 255) 25%, transparent 0),
+    linear-gradient(45deg, transparent 75%, rgb(255, 255, 255) 0);
+  background-size: 16px 16px;
+  background-position: 0 0, 8px 8px, 8px 8px, 16px 16px;
+  transition: border-color 130ms ease-in-out, box-shadow 130ms ease-in-out;
+  outline: none;
+}
 #hue-picker {
   width: 12px;
   height: 12px;

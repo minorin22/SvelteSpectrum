@@ -7,9 +7,9 @@
     <span class="toolName">Camera Wrok</span>
   </div>
   <div class="cameraWorkContainer">
-    <label for="inputContainer" class="coral-FieldLabel coral-FieldLabel--left">POSITION</label>
+    <label for="inputContainer" class="coral-FieldLabel coral-FieldLabel--left">Position</label>
     <div class="inputContainer">
-      <label for="inX" class="coral-FieldLabel coral-FieldLabel--left">IN</label>
+      <label for="inX" class="coral-FieldLabel coral-FieldLabel--left">In</label>
       <label for="inX" class="coral-FieldLabel coral-FieldLabel--left">X</label>
       <input type="text" is="coral-textfield" id="inX" variant="quiet">
       <label for="inY" class="coral-FieldLabel coral-FieldLabel--left">Y</label>
@@ -18,7 +18,7 @@
   </div>
   <div class="cameraWorkContainer">
     <div class="inputContainer">
-      <label for="outX" class="coral-FieldLabel coral-FieldLabel--left">OUT</label>
+      <label for="outX" class="coral-FieldLabel coral-FieldLabel--left">Out</label>
       <label for="outX" class="coral-FieldLabel coral-FieldLabel--left">X</label>
       <input type="text" is="coral-textfield" id="outX" variant="quiet">
       <label for="outY" class="coral-FieldLabel coral-FieldLabel--left">Y</label>
@@ -27,10 +27,10 @@
   </div>
   <div class="cameraWorkContainer">
     <div class="inputContainer">
-      <label for="sizeIn" class="coral-FieldLabel coral-FieldLabel--left">SCALE</label>
-      <label for="sizeIn" class="coral-FieldLabel coral-FieldLabel--left">IN</label>
+      <label for="sizeIn" class="coral-FieldLabel coral-FieldLabel--left">Scale</label>
+      <label for="sizeIn" class="coral-FieldLabel coral-FieldLabel--left">In</label>
       <input type="text" is="coral-textfield" id="sizeIn" variant="quiet">
-      <label for="sizeOut" class="coral-FieldLabel coral-FieldLabel--left">OUT</label>
+      <label for="sizeOut" class="coral-FieldLabel coral-FieldLabel--left">Out</label>
       <input type="text" is="coral-textfield" id="sizeOut" variant="quiet">
     </div>
   </div>
