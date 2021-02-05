@@ -19,7 +19,7 @@ $ npm install
 $ npm run icon
 ```
 
-To make the Spectrum icon visible, you need to run `npm run icon`.  
+To make the Spectrum icons visible, you need to run `npm run icon`.  
 It means `cp -r node_modules/@adobe/coral-spectrum/dist/resources public/`.
 
 ...then start [Rollup](https://rollupjs.org):
